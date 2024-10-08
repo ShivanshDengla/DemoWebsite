@@ -24,12 +24,21 @@ function page4Animation() {
 }
 
 function swiperAnimation() {
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: "auto",
-        centeredSlides: true,
-        spaceBetween: 100,
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
+        speed: 5000,
+        grabCursor: true,
+        mousewheelControl: true,
+        keyboardControl: true,
     });
 }
+
 function menuAnimation() {
 
     var menu = document.querySelector("nav h3")
@@ -60,3 +69,16 @@ swiperAnimation()
 page4Animation()
 menuAnimation()
 loaderAnimation()
+
+// JavaScript for Mobile Menu
+document.getElementById("hamburger-menu").addEventListener("click", function () {
+    document.getElementById("mobile-menu").classList.toggle("open");
+});
+
+// Optional: Close menu when clicking outside of it
+document.addEventListener("click", function (e) {
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (!mobileMenu.contains(e.target) && e.target.id !== "hamburger-menu") {
+        mobileMenu.classList.remove("open");
+    }
+});
